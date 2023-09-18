@@ -44,3 +44,6 @@ sistem manejemen point mahasiswa
     ```
     npm run build
     ```
+
+## Find Bug or Have Issue
+[Visit here 🛹](https://github.com/uptkompwp/sip-point/issues)
