@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.router-link-active {
+    @apply bg-neutral text-white;
+}
+.router-link-exact-active {
+    @apply bg-neutral text-white;
+}

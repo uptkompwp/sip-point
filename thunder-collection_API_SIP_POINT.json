@@ -1,0 +1,108 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "API_SIP_POINT",
+    "dateExported": "2023-07-30T08:08:08.303Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "d1f1b96a-c5d6-4144-87f9-a2d8e2562c62",
+            "name": "POINT MANAGEMENT",
+            "containerId": "",
+            "created": "2023-07-30T07:44:25.070Z",
+            "sortNum": 5000
+        },
+        {
+            "_id": "0b31b1bb-4415-4764-bd8e-3e18008a2455",
+            "name": "AUTH",
+            "containerId": "",
+            "created": "2023-07-30T07:43:10.838Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "dab25fc2-11ec-4d21-9427-afd5dce795fd",
+            "name": "KELAS",
+            "containerId": "",
+            "created": "2023-07-30T07:43:17.446Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "0e0c2660-711b-4f65-b458-148e97753ea3",
+            "name": "MAHASISWA",
+            "containerId": "",
+            "created": "2023-07-30T07:43:24.942Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "6e1b8223-ab6f-4143-add0-5bc3d6392096",
+            "name": "USERS",
+            "containerId": "",
+            "created": "2023-07-30T07:43:36.686Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "17e441dd-11a6-4f4f-8a6a-ee05d9217a2c",
+            "name": "JURUSAN",
+            "containerId": "",
+            "created": "2023-07-30T07:43:48.622Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "b5a3459d-11d2-4083-b904-a137ddd82a76",
+            "name": "MATA KULIAH",
+            "containerId": "",
+            "created": "2023-07-30T07:44:02.646Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "f1870e74-47e2-4fca-96a5-dda7431f80f4",
+            "name": "LAPORAN",
+            "containerId": "",
+            "created": "2023-07-30T07:44:12.006Z",
+            "sortNum": 90000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8789017e-4c21-4f31-82d9-844fdb675a04",
+            "colId": "3d232c31-7220-4f58-9360-c492657ceb45",
+            "containerId": "0b31b1bb-4415-4764-bd8e-3e18008a2455",
+            "name": "LOGIN",
+            "url": "/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-30T07:45:43.062Z",
+            "modified": "2023-07-30T07:57:41.588Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"farriq\",\n  \"password\":\"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cf57e832-a4b6-4af0-a6cc-cbc3cafcfd81",
+            "colId": "3d232c31-7220-4f58-9360-c492657ceb45",
+            "containerId": "0b31b1bb-4415-4764-bd8e-3e18008a2455",
+            "name": "ME",
+            "url": "/auth/me",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-30T07:58:05.861Z",
+            "modified": "2023-07-30T08:07:53.135Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA3MDM4NjEsImV4cCI6MTY5MDcwNzQ2MSwibmJmIjoxNjkwNzAzODYxLCJqdGkiOiIxSWo1eFFDOVpNY1RUdVpTIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.AxKr93pG_02M3xOD5gjj5CUEq3PuH8YY2aGiWvOJFLY"
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://127.0.0.1:8000/api"
+        }
+    }
+}
