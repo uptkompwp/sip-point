@@ -5,7 +5,7 @@ sistem manejemen point mahasiswa
 # How to use
 1. Clone this repository
      ```
-     URL
+     https://github.com/uptkompwp/sip-point.git
      ```
 2. Install dependency
    
