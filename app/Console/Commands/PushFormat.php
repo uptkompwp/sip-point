@@ -29,7 +29,7 @@ class PushFormat extends Command
         $path = __DIR__ . "/../../../format/";
         $files = scandir($path);
         Artisan::call('storage:link');
-        $uploadDir = __DIR__ . "/../../../storage/app/test/";
+        $uploadDir = __DIR__ . "/../../../storage/app/format/";
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir);
         }
