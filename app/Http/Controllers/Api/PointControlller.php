@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\ContextErrorEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\KuisResource;
 use App\Http\Resources\PaginateResource;
 use App\Http\Resources\PointResource;
 use App\Imports\MahasiswaImport;
 use App\Models\Kuis;
 use App\Models\Mahasiswa;
 use App\Models\Point;
+use App\Models\Sesi;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Excel;
@@ -76,10 +78,10 @@ class PointControlller extends Controller
                     $mahasiswaId = $request->mahasiswa;
                     $checkMahasiswa = $this->mahasiswa->find($mahasiswaId);
                     if ($checkMahasiswa != null) {
-                        // check kelas mahasiswa 
+                        // check kelas mahasiswa
                         $kuis = $this->kuis->with('sesi')->find($kuisId);
                         if ($kuis->sesi->id_kelas === $checkMahasiswa->id_kelas) {
-                            // check mahasiswa sudah dapat point 
+                            // check mahasiswa sudah dapat point
                             // $pointAlreadyExist = $this->point->where('id_kuis', $kuisId)->where('id_mahasiswa', $mahasiswaId)->first();
                             // if ($pointAlreadyExist != null) {
                             //     return $this->responseError(ContextErrorEnum::VALIDATIONS, ['validations' => ['mahasiswa' => ['Mahasiswa dengan NIM ' . $checkMahasiswa->nim . ' telah mendapatkan point']]], 400);
@@ -250,5 +252,16 @@ class PointControlller extends Controller
         $p2 = substr($val, 2, 3);
         $p3 = substr($val, 5, 4);
         return  implode('.', [$p1, $p2, $p3]);
+    }
+
+    public function getDetailKuis(string $sesiId)
+    {
+        try {
+            $resource = KuisResource::collection($this->kuis->where('id_sesi', $sesiId)->get());
+            return $this->responseSuccess($resource);
+        } catch (\Exception $e) {
+            dd($e);
+            return $this->responseError(ContextErrorEnum::INTERNAL_SERVER_ERROR, ['message' => 'Internal Server Error'],500);
+        }
     }
 }

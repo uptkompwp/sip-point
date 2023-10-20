@@ -149,7 +149,7 @@ const routes = [
         },
     },
     {
-        path: "/point-management/kuis/:id/detail/create-point",
+        path: "/point-management/kuis/:id/:sesi_id/detail/create-point",
         component: CreatePoint,
         name: "create-point",
         meta: {

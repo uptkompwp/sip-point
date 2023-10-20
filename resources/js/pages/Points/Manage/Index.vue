@@ -178,7 +178,8 @@ const handleBlur = async (e, id, point) => {
                 </li>
             </ul>
             <div class="flex lg:flex-row items-start gap-3 flex-wrap mt-3">
-                <router-link class="btn btn-neutral btn-sm" :to="{ name: 'create-point', params: { id: route.params.id } }">
+                <router-link class="btn btn-neutral btn-sm"
+                    :to="{ name: 'create-point', params: { id: route.params.id, sesi_id: data.data.id_sesi } }">
                     <PlusIcon class="h-5 w-5" /> Add Point
                 </router-link>
                 <button :disabled="loading_reset" @click.prevent="handleReset" class="btn btn-error btn-outline btn-sm">
@@ -253,5 +254,5 @@ export default {
 }
 </script>
 <style lang="">
-    
+
 </style>
