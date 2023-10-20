@@ -10,6 +10,9 @@ const storePoint = async (data) => {
     return await http.post(`/point/${route.params.id}`, { ...data, mahasiswa: data.mahasiswa ? data.mahasiswa.value : null })
 }
 
+const getDetailKuis = async () => {
+    return await http.get(`/kuis-detail/${route.params.sesi_id}/point`);
+}
 const toast = useToast()
 const { isLoading, mutate } = useMutation(storePoint, {
     onMutate() {
@@ -35,12 +38,14 @@ const { isLoading, mutate } = useMutation(storePoint, {
     },
 })
 
-const getSesi = async () => {
+const getKuis = async () => {
     return await http.get(`/kuis/${route.params.id}/edit`);
 }
 
+
+
 const router = useRouter()
-const { mutate: get_edit, status } = useMutation(getSesi, {
+const { mutate: get_edit, status } = useMutation(getKuis, {
     onError(error: any) {
         switch (error.response.data.context) {
             case "NOT_FOUND":
@@ -55,6 +60,11 @@ const { mutate: get_edit, status } = useMutation(getSesi, {
     },
 })
 
+const { data: data_detail_kuis, isLoading: loading_detail_kuis, status: status_detail_kuis } = useQuery({
+    queryKey: [`get_detail_kuis_by_${route.params.sesi_id}`],
+    queryFn: getDetailKuis,
+})
+
 
 onMounted(async () => {
     toast.clear();
@@ -66,9 +76,6 @@ const handleSubmit = async () => {
     await mutate(data)
 }
 
-onMounted(() => {
-    toast.clear();
-})
 
 
 const getMhs = async (search) => {
@@ -82,7 +89,18 @@ function setMhs(val) {
 <template>
     <div>
         <div v-if="status === 'success'">
-            <Buttonback />
+            <router-link :to="{ name: 'kuis', params: { sesi_id: route.params.sesi_id } }"
+                class="btn btn-neutral btn-sm my-4">
+                <ChevronLeftIcon class="h-5 w-5" /> Kembali
+            </router-link>
+            <p class="text-sm mb-2 font-semibold">Kuis Shortcut : </p>
+            <div class="flex mb-3 gap-2 flex-wrap" v-if="status_detail_kuis != 'loading'">
+                <router-link :to="{ name: 'create-point', params: { id: kuis.id } }"
+                    class="btn btn-outline btn-neutral btn-sm" v-for="kuis in data_detail_kuis.data" :key="kuis.id">
+                    {{ kuis.kuis }}
+                </router-link>
+            </div>
+            <span class="loading loading-dots loading-xs" v-else></span>
             <div class="p-4 card border lg:max-w-lg w-full rounded-md">
                 <h3 class="card-title mb-3">Tambahkan Point Baru</h3>
                 <form @submit.prevent="handleSubmit" class="space-y-4">
@@ -111,17 +129,18 @@ function setMhs(val) {
     </div>
 </template>
 <script lang="ts">
-import { useMutation } from '@tanstack/vue-query';
+import { useMutation, useQuery } from '@tanstack/vue-query';
 import Buttonback from '../../../components/Buttonback.vue';
 import { useToast } from 'vue-toast-notification';
 import ValidationFeedback from '../../../components/ValidationFeedback.vue';
 import Loading from '../../../components/Loading.vue'
 import SearchInput from '../../../components/SearchInput.vue';
 import { checkValidation } from '../../../helpers/validation_helper';
+import { ChevronLeftIcon } from '@heroicons/vue/24/outline';
 export default {
     components: { Buttonback, Loading }
 }
 </script>
 <style lang="">
-    
+
 </style>

@@ -23,7 +23,7 @@ const activeMenuChildren = ref<boolean>(false)
 
 const handleCheckCurrentChildren = (routename) => {
     if (routename) {
-        (childrens?.value?.some(children => routename.includes(children.to.name))) ? activeMenuChildren.value = true : activeMenuChildren.value = false
+        // (childrens?.value?.some(children => routename.includes(children.to.name))) ? activeMenuChildren.value = true : activeMenuChildren.value = false
         activeMenuChildren.value ? show.value = true : show.value = false
     }
 

@@ -90,7 +90,7 @@ const childrensMaster = reactive<{ text: string, to: RouteLocationRaw, show: boo
 </script>
 <template>
     <TransitionGroup name="slide">
-        <aside class="w-[250px] fixed bg-white top-0 bottom-0 p-[0.5rem] border-r z-[999] overflow-y-auto"
+        <aside class="w-[250px] fixed bg-white dark:bg-neutral top-0 bottom-0 p-[0.5rem] border-r z-[999] overflow-y-auto"
             v-if="menuStore.getShowMenu">
             <Logo />
             <ul class="space-y-2 mt-3 px-[0.4rem]">

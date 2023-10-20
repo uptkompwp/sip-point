@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware('apiSecret')->group(function () {
+// Route::middleware('apiSecret')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('login', [AuthController::class, 'login']);
         Route::middleware('jwtauth')->group(function () {
@@ -77,10 +77,11 @@ Route::middleware('apiSecret')->group(function () {
         Route::post('point/{kuisId}/import', [PointControlller::class, 'import']);
         Route::post('point/{kuisId}/import-save', [PointControlller::class, 'import_save']);
         Route::get('point-download-format', [PointControlller::class, 'download_format']);
+        Route::get('kuis-detail/{kuisId}/point', [PointControlller::class, 'getDetailKuis']);
         // home controller
         Route::get('info', [ReportController::class, 'info']);
         Route::prefix('report')->group(function () {
             Route::get('export', [ReportController::class, 'export']);
         });
     });
-});
+// });

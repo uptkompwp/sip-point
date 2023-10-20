@@ -46,7 +46,7 @@ const handleLogout = async () => {
 </script>
 <template>
     <nav
-        class="p-[0.75rem] border-b bg-white mb-4 lg:grid flex justify-between lg:justify-normal items-center sticky -top-1 z-[777]">
+        class="p-[0.75rem] border-b bg-white mb-4 dark:bg-neutral lg:grid flex justify-between lg:justify-normal items-center sticky -top-1 z-[777]">
         <button class="btn justify-self-start" v-if="menuStore.getIsMobile" @click.prevent="handleMenuClick">
             <Bars3Icon class="h-5 w-5" />
         </button>
@@ -83,5 +83,5 @@ export default {
 }
 </script>
 <style lang="">
-    
+
 </style>
